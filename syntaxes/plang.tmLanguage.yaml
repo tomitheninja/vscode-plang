@@ -18,32 +18,42 @@ repository:
       - include: "#expressions"
   expressions:
     patterns:
-      - include: "#types"
       - include: "#keywords"
       - include: "#constants"
       - include: "#square-brackets"
+      - include: "#types"
   types:
     name: support.type
-    match: "(?i)\\b(EG[EÉ]SZ|VAL[OÓ]S|KARAKTER|SZ[OÖ]VEG|LOGIKAI)\\b"
+    match: "(?i)\\b(EG[EÉ]SZ|VAL[OÓ]S|KARAKTER|SZ[OÖ]VEG|LOGIKAI)"
   keywords:
     patterns:
-      - name: keyword.control.conditional.js
-        match: (?i)(HA|AKKOR|K[UÜ]L[OÖ]NBEN|HA_V[EÉ]GE)\b
-        captures:
-          "1": { name: punctuation.definition.keyword.plang }
-      - name: keyword.control.loop.js
-        match: (?i)(?<!\.)\b(CIKLUS\s+AMÍG|CIKLUS_V[EÉ]GE)\b
-      - name: "keyword.operator.plang"
-        match: "(:=|<|<=|=|/=|>=|>|MOD|DIV|NEM|VAGY|[EÉ]S|KIS|NAGY|\\+|\\-|\\/|\\*|\\^|\\@|\\||SIN|COS|ARCSIN|ARCTAN|LOG|EXP|KEREK|EG[EÉ]SZ|BET[UŰ]|SZ[AÁ]M|MEGNYIT|LEZ[AÁ]R|V[EÉ]GE|BE\\s*:|KI\\s*:)"
+      - name: keyword.operator.logical.plang
+        match: (?i)(NEM|[EÉ]S|VAGY)
+
+      - name: keyword.operator.assignment.plang
+        match: ":="
+
+      - name: keyword.operator.comparison.plang
+        match: "(?<![<>\\/=])((\\/)?=)"
+
+      - name: keyword.operator.relational.plang
+        match: "(?<![<>\\/=])([<>](=)?)"
+
+      - name: keyword.operator.arithmetic.plang
+        match: "(?i)([\\+\\-\\/\\*\\^]|MOD|DIV|NAGY|KIS|KEREK|DIV|EG[EÉ]SZ|@|SIN|COS|ARCSIN|ARCTAN|LOG|EXP|KEREK|EG[EÉ]SZ|BET[UŰ]|SZ[AÁ]M|MEGNYIT|LEZ[AÁ]R)"
+
+      - include: "#length-operator"
   constants:
     name: "contant.plang"
     patterns:
       - name: constant.character.plang
         match: "'.'"
-      - name: constant.character.escape.plang
-        match: "'"
       - name: constant.numeric.plang
-        match: "\\b[0-9]+(\\.[0-9]+)?\\b"
+        match: "\\b\\d+(\\.\\d+)?\\b"
+      - include: "#strings"
+
+  strings:
+    patterns:
       - name: string.quoted.double.plang
         begin: '"'
         end: '"'
@@ -60,6 +70,17 @@ repository:
         end: \]
         endCaptures:
           "0": { name: meta.brace.square.plang }
+        patterns:
+          - include: "#expressions"
+
+  length-operator:
+    patterns:
+      - begin: \|
+        beginCaptures:
+          "0": { name: keyword.operator.arithmetic.plang }
+        end: \|
+        endCaptures:
+          "0": { name: keyword.operator.arithmetic.plang }
         patterns:
           - include: "#expressions"
 
