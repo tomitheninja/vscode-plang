@@ -6,6 +6,11 @@
   "engines": {
     "vscode": "^1.49.0"
   },
+  "homepage": "https://github.com/tomitheninja/vscode-plang",
+  "bugs": {
+    "url": "https://github.com/tomitheninja/vscode-plang/issues"
+  },
+  "license": "SEE LICENSE IN LICENSE",
   "categories": [
     "Programming Languages"
   ],
