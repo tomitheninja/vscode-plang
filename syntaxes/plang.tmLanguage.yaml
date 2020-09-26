@@ -22,6 +22,7 @@ repository:
       - include: "#constants"
       - include: "#square-brackets"
       - include: "#types"
+      - include: "#builtin"
   types:
     name: support.type
     match: "(?i)\\b(EG[EÉ]SZ|VAL[OÓ]S|KARAKTER|SZ[OÖ]VEG|LOGIKAI)"
@@ -84,4 +85,8 @@ repository:
         patterns:
           - include: "#expressions"
 
+  builtin:
+    patterns:
+      - name: keyword.other.plang
+        match: "\\b(BE|KI|SV)\\b"
 scopeName: "source.plang"
