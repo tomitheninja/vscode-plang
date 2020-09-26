@@ -19,12 +19,48 @@ repository:
   expressions:
     patterns:
       - include: "#types"
-      - include: "#operators"
+      - include: "#keywords"
+      - include: "#constants"
+      - include: "#square-brackets"
   types:
     name: support.type
     match: "(?i)\\b(EG[EÉ]SZ|VAL[OÓ]S|KARAKTER|SZ[OÖ]VEG|LOGIKAI)\\b"
-  operators:
+  keywords:
     patterns:
+      - name: keyword.control.conditional.js
+        match: (?i)(HA|AKKOR|K[UÜ]L[OÖ]NBEN|HA_V[EÉ]GE)\b
+        captures:
+          "1": { name: punctuation.definition.keyword.plang }
+      - name: keyword.control.loop.js
+        match: (?i)(?<!\.)\b(CIKLUS\s+AMÍG|CIKLUS_V[EÉ]GE)\b
       - name: "keyword.operator.plang"
-        match: "(:=|<|<=|=|/=|>=|>|MOD|DIV|NEM|VAGY|[EÉ]S|KIS|NAGY|\\+|\\-|\\/|\\*|\\^|\\@|\\||SIN|COS|ARCSIN|ARCTAN|LOG|EXP|KEREK|EG[EÉ]SZ|BET[UŰ]|SZ[AÁ]M|MEGNYIT|LEZ[AÁ]R|V[EÉ]GE)"
+        match: "(:=|<|<=|=|/=|>=|>|MOD|DIV|NEM|VAGY|[EÉ]S|KIS|NAGY|\\+|\\-|\\/|\\*|\\^|\\@|\\||SIN|COS|ARCSIN|ARCTAN|LOG|EXP|KEREK|EG[EÉ]SZ|BET[UŰ]|SZ[AÁ]M|MEGNYIT|LEZ[AÁ]R|V[EÉ]GE|BE\\s*:|KI\\s*:)"
+  constants:
+    name: "contant.plang"
+    patterns:
+      - name: constant.character.plang
+        match: "'.'"
+      - name: constant.character.escape.plang
+        match: "'"
+      - name: constant.numeric.plang
+        match: "\\b[0-9]+(\\.[0-9]+)?\\b"
+      - name: string.quoted.double.plang
+        begin: '"'
+        end: '"'
+        patterns:
+          - match: "\\\\(u\\h{4}|.)"
+            name: "constant.character.escape.plang"
+
+  square-brackets:
+    patterns:
+      - name: meta.group.braces.square
+        begin: \[
+        beginCaptures:
+          "0": { name: meta.brace.square.plang }
+        end: \]
+        endCaptures:
+          "0": { name: meta.brace.square.plang }
+        patterns:
+          - include: "#expressions"
+
 scopeName: "source.plang"
