@@ -1,25 +1,40 @@
 {
-    "name": "plang-language-support",
-    "displayName": "plang-language-support",
-    "description": "Add support for plang (pazmany language)",
-    "version": "0.0.1",
-    "engines": {
-        "vscode": "^1.49.0"
-    },
-    "categories": [
-        "Programming Languages"
+  "name": "plang-language-support",
+  "displayName": "plang-language-support",
+  "description": "Add support for plang (pazmany language)",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.49.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "plang",
+        "aliases": [
+          "Plang",
+          "plang"
+        ],
+        "extensions": [
+          ".plang"
+        ],
+        "configuration": "./language-configuration.json"
+      }
     ],
-    "contributes": {
-        "languages": [{
-            "id": "plang",
-            "aliases": ["Plang", "plang"],
-            "extensions": [".plang"],
-            "configuration": "./language-configuration.json"
-        }],
-        "grammars": [{
-            "language": "plang",
-            "scopeName": "",
-            "path": "./syntaxes/plang.tmLanguage.json"
-        }]
-    }
+    "grammars": [
+      {
+        "language": "plang",
+        "scopeName": "source.plang",
+        "path": "./syntaxes/plang.tmLanguage.json"
+      }
+    ]
+  },
+  "scripts": {
+    "prepare": "js-yaml syntaxes/plang.tmLanguage.yaml > syntaxes/plang.tmLanguage.json"
+  },
+  "dependencies": {
+    "js-yaml": "^3.14.0"
+  }
 }
