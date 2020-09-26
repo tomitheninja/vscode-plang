@@ -19,6 +19,6 @@ Feel free to report them [here](https://github.com/tomitheninja/vscode-plang)
 
 ## LICENSE
 
-See LICENSE.md
+See [LICENSE](https://github.com/tomitheninja/vscode-plang/blob/master/LICENSE)
 
 **Enjoy!**
