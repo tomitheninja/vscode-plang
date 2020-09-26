@@ -2,5 +2,10 @@
 "$schema": https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json
 name: Plang
 patterns:
+  - include: "#comments"
 repository:
-scopeName: "plang.source"
+  comments:
+    patterns:
+      - name: comment.line.plang
+        match: "\\*\\*.*$"
+scopeName: "source.plang"
