@@ -15,4 +15,11 @@ repository:
     end: "(?i)\\bPROGRAM_V[EÉ]GE\\b"
     patterns:
       - include: "#comments"
+      - include: "#expressions"
+  expressions:
+    patterns:
+      - include: "#types"
+  types:
+    name: support.type
+    match: "(?i)\\b(EG[EÉ]SZ|VAL[OÓ]S|KARAKTER|SZ[OÖ]VEG|LOGIKAI)\\b"
 scopeName: "source.plang"
