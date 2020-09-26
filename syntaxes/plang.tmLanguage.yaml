@@ -3,9 +3,16 @@
 name: Plang
 patterns:
   - include: "#comments"
+  - include: "#program"
 repository:
   comments:
     patterns:
       - name: comment.line.plang
         match: "\\*\\*.*$"
+  program:
+    name: meta.program.plang
+    begin: "(?i)\\bPROGRAM\\b"
+    end: "(?i)\\bPROGRAM_V[EÉ]GE\\b"
+    patterns:
+      - include: "#comments"
 scopeName: "source.plang"
