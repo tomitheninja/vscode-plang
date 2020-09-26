@@ -19,7 +19,12 @@ repository:
   expressions:
     patterns:
       - include: "#types"
+      - include: "#operators"
   types:
     name: support.type
     match: "(?i)\\b(EG[EÉ]SZ|VAL[OÓ]S|KARAKTER|SZ[OÖ]VEG|LOGIKAI)\\b"
+  operators:
+    patterns:
+      - name: "keyword.operator.plang"
+        match: "(:=|<|<=|=|/=|>=|>|MOD|DIV|NEM|VAGY|[EÉ]S|KIS|NAGY|\\+|\\-|\\/|\\*|\\^|\\@|\\||SIN|COS|ARCSIN|ARCTAN|LOG|EXP|KEREK|EG[EÉ]SZ|BET[UŰ]|SZ[AÁ]M|MEGNYIT|LEZ[AÁ]R|V[EÉ]GE)"
 scopeName: "source.plang"
