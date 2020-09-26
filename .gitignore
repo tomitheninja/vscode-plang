@@ -1,2 +1,4 @@
 node_modules
 *.vsix
+# generated
+syntaxes/plang.tmLanguage.json
