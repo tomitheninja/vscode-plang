@@ -29,6 +29,12 @@
         "scopeName": "source.plang",
         "path": "./syntaxes/plang.tmLanguage.json"
       }
+    ],
+    "snippets": [
+      {
+        "language": "plang",
+        "path": "./snippets/snippets.code-snippets"
+      }
     ]
   },
   "scripts": {

@@ -1,0 +1,31 @@
+{
+  "program": {
+    "prefix": ["program"],
+    "body": "PROGRAM ${1:p}\n\t$0\nPROGRAM_VÉGE",
+    "description": "Egy új program létrehozása megadható névvel"
+  },
+  "megjegyzés": {
+    "prefix": ["doc"],
+    "body": "** $0\n",
+    "description": "Megjegyzés létrehozása a sorban"
+  },
+  "változó": {
+    "prefix": ["valtozo"],
+    "body": "VÁLTOZÓK:\n\t$1: $2\n$0",
+    "description": "Egy változó felvétele"
+  },
+  "elágazás": {
+    "prefix": ["ha-akkor"],
+    "body": "HA $1 AKKOR\n\t$2\nHA_VÉGE\n$0",
+    "description": "Új elágazás felvétele"
+  },
+  "elágazás2": {
+    "prefix": ["ha-különben"],
+    "body": "HA $1 AKKOR\n\t$2\nKÜLÖNBEN\n\t$3\nHA_VÉGE\n$0",
+    "description": "Új elágazás felvétele"
+  },
+  "számláló-ciklus": {
+    "prefix": "ciklus_számláló",
+    "body": "CIKLUS AMÍG $1 ${2:< 10}\n\t$0\n\t$1 := $1 + 1\nCIKLUS_VÉGE"
+  }
+}
